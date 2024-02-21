@@ -20,7 +20,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Selamat Datang Di Ton Subdomain!, ini adalah layanan subdomain gratis dan otomatis dengan menggunakan API Cloudflare! \n\n Silahkan gunakan layanan ini dengan baik,kami tidak mengizinkan subdomain untuk tindakan ilegal cth : phising/scam/web judi/ \n")
 
     # Pilihan domain
-    reply_keyboard = [['cilacap.city', 'gafoqe.com', 'xva.ltd', 'aliansitimur.com', 'garudashield.org', 'Cancel']]
+    reply_keyboard = [['cilacap.city', 'gafoqe.com', 'xva.ltd', 'Cancel']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True)
     context.bot.send_message(chat_id=user_id, text="Pilih domain:", reply_markup=markup)
 
@@ -39,7 +39,7 @@ def wait_domain(update, context):
     user_id = update.message.from_user.id
     selected_domain = update.message.text.lower()
 
-    if selected_domain not in ['cilacap.city', 'gafoqe.com', 'xva.ltd', 'aliansitimur.com', 'garudashield.org', 'cancel']:
+    if selected_domain not in ['cilacap.city', 'gafoqe.com', 'xva.ltd', 'cancel']:
         context.bot.send_message(chat_id=user_id, text="Pilihan domain tidak valid. Silakan pilih domain yang benar.")
         return 'wait_domain'
     elif selected_domain == 'cancel':
@@ -78,10 +78,6 @@ def wait_ip(update, context):
         zone_id = '45b2d3902a429f40c86fb435477de110'
     elif user_data['domain'] == 'xva.ltd':
         zone_id = 'f48cc580bb94d2b12755c9ac3a975015'
-    elif user_data['domain'] == 'aliansitimur.com':
-        zone_id = '4479de638b5d2d5bf525d6305c995685'
-    elif user_data['domain'] == 'garudashield.org':
-        zone_id = 'b61917fe2e1da013d306008a05a8c67c'
     else:
         context.bot.send_message(chat_id=user_id, text="Terjadi kesalahan. Silakan coba lagi.")
         return cancel(update, context)
@@ -130,4 +126,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-  
+    

@@ -17,7 +17,7 @@ user_ips = {}
 
 def start(update, context):
     user_id = update.message.from_user.id
-    context.bot.send_message(chat_id=update.message.chat_id, text="Selamat Datang Di Ton Subdomain!, ini adalah layanan subdomain gratis dan otomatis dengan menggunakan API Cloudflare!\n\nSilahkan gunakan layanan ini dengan baik,kami tidak mengizinkan subdomain untuk tindakan ilegal cth : phising/scam/web judi\n\nIngin Custom Subdomain sesuai yang kamu mau? hubungi @ctrxzip, hanya 2k per subdomain!\n")
+    context.bot.send_message(chat_id=update.message.chat_id, text="Selamat Datang Di Whale Subdomain🐳!, ini adalah layanan subdomain gratis dan otomatis dengan menggunakan API Cloudflare!\n\nSilahkan gunakan layanan ini dengan baik,kami tidak mengizinkan subdomain untuk tindakan ilegal cth : phising/scam/web judi\n")
 
     # Pilihan domain
     reply_keyboard = [['XVA.LTD', 'GAFOQE.COM', 'Cancel']]
@@ -89,7 +89,7 @@ def wait_ip(update, context):
     try:
         cf.zones.dns_records.post(zone_id, data=record)
         # Mengirimkan pesan ke pengguna dengan subdomain yang dibuat
-        message = f"Subdomain Berhasil dibuat.\nCreated by @ctrxzip\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Kamu :\n{subdomain}.{user_data['domain']}\n\nBot Created BY : @ctrxzip.\nID Kamu : {user_id}\n"
+        message = f"Subdomain Berhasil dibuat.\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Kamu :\n{subdomain}.{user_data['domain']}\n\nBot Created BY : @ctrxzip.\nID Kamu : {user_id}\n"
         context.bot.send_message(chat_id=user_id, text=message)
     except Exception as e:
         print(f"Error creating DNS record: {e}")

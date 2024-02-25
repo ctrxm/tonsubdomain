@@ -20,9 +20,11 @@ def start(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Selamat Datang Di Whale Subdomain🐳!, ini adalah layanan subdomain gratis dan otomatis dengan menggunakan API Cloudflare!\n\nSilahkan gunakan layanan ini dengan baik,kami tidak mengizinkan subdomain untuk tindakan ilegal cth : phising/scam/web judi\n")
 
     # Pilihan domain
-    reply_keyboard = [['XVA.LTD', 'GAFOQE.COM', 'Cancel']]
+    reply_keyboard = [['XVA.LTD', 'GAFOQE.COM', 'GARUDASHIELD.COM'], ['Cancel']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True)
     context.bot.send_message(chat_id=user_id, text="Pilih domain yang tersedia:", reply_markup=markup)
+
+
 
     # Mengatur state agar bot tahu kita sedang menunggu pemilihan domain
     return 'wait_domain'
@@ -39,7 +41,7 @@ def wait_domain(update, context):
     user_id = update.message.from_user.id
     selected_domain = update.message.text.lower()
 
-    if selected_domain not in ['xva.ltd', 'gafoqe.com', 'cancel']:
+    if selected_domain not in ['xva.ltd', 'gafoqe.com', 'garudashield.com', 'cancel']:
         context.bot.send_message(chat_id=user_id, text="Pilihan domain tidak valid. Silakan pilih domain yang benar.")
         return 'wait_domain'
     elif selected_domain == 'cancel':
@@ -76,6 +78,8 @@ def wait_ip(update, context):
         zone_id = 'f48cc580bb94d2b12755c9ac3a975015'
     elif user_data['domain'] == 'gafoqe.com':
         zone_id = '45b2d3902a429f40c86fb435477de110'
+    elif user_data['domain'] == 'garudashield.com':
+        zone_id = 'dec253b052e3f2e7d40b91a2aabdd575'
     else:
         context.bot.send_message(chat_id=user_id, text="Terjadi kesalahan. Silakan coba lagi.")
         return cancel(update, context)
@@ -89,7 +93,7 @@ def wait_ip(update, context):
     try:
         cf.zones.dns_records.post(zone_id, data=record)
         # Mengirimkan pesan ke pengguna dengan subdomain yang dibuat
-        message = f"Subdomain Berhasil dibuat.\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Kamu :\n{subdomain}.{user_data['domain']}\n\nBot Created BY : @ctrxzip.\nID Kamu : {user_id}\n"
+        message = f"Subdomain Berhasil dibuat.\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Kamu :\n{subdomain}.{user_data['domain']}\n\nCreated BY : @ctrxzip.\nID Kamu : {user_id}\n"
         context.bot.send_message(chat_id=user_id, text=message)
     except Exception as e:
         print(f"Error creating DNS record: {e}")

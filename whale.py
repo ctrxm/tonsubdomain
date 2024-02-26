@@ -84,7 +84,7 @@ def wait_ip(update, context):
         zone_id = 'b73d2f8ccabb1f3df240ca0e54aacfbd'
     elif user_data['domain'] == 'alat.site':
         zone_id = '363ece6fb33726dd410cbb68ba06923b'
-     elif user_data['domain'] == 'geget.in':
+    elif user_data['domain'] == 'geget.in':
         zone_id = '45ec0cc29eb9d94f3d9c7578e3d5db5a'
     else:
         context.bot.send_message(chat_id=user_id, text="Terjadi kesalahan. Silakan coba lagi.")
